@@ -145,7 +145,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.34
 	github.com/minio/crc64nvme v1.1.1
 	github.com/orcaman/concurrent-map/v2 v2.0.1
-	github.com/parquet-go/parquet-go v0.26.4
+	github.com/parquet-go/parquet-go v0.27.0
 	github.com/pkg/sftp v1.13.10
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/rclone/rclone v1.72.1
@@ -267,8 +267,8 @@ require (
 	github.com/substrait-io/substrait v0.69.0 // indirect
 	github.com/substrait-io/substrait-go/v4 v4.4.0 // indirect
 	github.com/substrait-io/substrait-protobuf/go v0.71.0 // indirect
-	github.com/twpayne/go-geom v1.4.1 // indirect
-	github.com/twpayne/go-kml v1.5.2 // indirect
+	github.com/twpayne/go-geom v1.6.1 // indirect
+	github.com/twpayne/go-kml/v3 v3.2.1 // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect
 	github.com/wk8/go-ordered-map/v2 v2.1.8 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
