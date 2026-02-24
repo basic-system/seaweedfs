@@ -140,8 +140,20 @@ func TestShouldSkipDetectionByInterval(t *testing.T) {
 	}
 }
 
+func TestVacuumHandlerCapabilityMaxExecutionConcurrency(t *testing.T) {
+	cap := NewVacuumHandler(nil, 5).Capability()
+	if cap.MaxExecutionConcurrency != 5 {
+		t.Fatalf("expected MaxExecutionConcurrency=5, got=%d", cap.MaxExecutionConcurrency)
+	}
+
+	cap = NewVacuumHandler(nil, 0).Capability()
+	if cap.MaxExecutionConcurrency != DefaultMaxExecutionConcurrency {
+		t.Fatalf("expected fallback MaxExecutionConcurrency=%d, got=%d", DefaultMaxExecutionConcurrency, cap.MaxExecutionConcurrency)
+	}
+}
+
 func TestVacuumHandlerRejectsUnsupportedJobType(t *testing.T) {
-	handler := NewVacuumHandler(nil)
+	handler := NewVacuumHandler(nil, 0)
 	err := handler.Detect(context.Background(), &plugin_pb.RunDetectionRequest{
 		JobType: "balance",
 	}, noopDetectionSender{})
@@ -158,7 +170,7 @@ func TestVacuumHandlerRejectsUnsupportedJobType(t *testing.T) {
 }
 
 func TestVacuumHandlerDetectSkipsByMinInterval(t *testing.T) {
-	handler := NewVacuumHandler(nil)
+	handler := NewVacuumHandler(nil, 0)
 	sender := &recordingDetectionSender{}
 	err := handler.Detect(context.Background(), &plugin_pb.RunDetectionRequest{
 		JobType:           "vacuum",
